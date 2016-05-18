@@ -190,7 +190,7 @@ end
 
 -- Register as a normal lua package loader.
 local cwd = uv.cwd()
-table.insert(package.loaders, 1, function (path)
+table.insert(package.loaders or package.searchers, 1, function (path)
 
   -- Ignore built-in libraries with this loader.
   if path:match("^[a-z]+$") and package.preload[path] then
